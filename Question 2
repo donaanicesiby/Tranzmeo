@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv("weather.csv")
+print('Correlation --> ', df['Year'].corr(df['Fires']))
+print('Moving Average of  Fires--> ', df['Fires'].rolling(5).mean())
+
+plt.plot(df['Year'], df['Fires'], color = 'g', linestyle = 'dashed',
+         marker = 'o',label = "Weather Data")
+  
+plt.xticks(rotation = 25)
+plt.xlabel('Year')
+plt.ylabel('No. of fires')
+plt.title('Number of Fires and Acres Burned in US in years 1987 to 2019', fontsize = 20)
+plt.grid()
+plt.legend()
+plt.show()
+
+
+Output:
+Correlation -->  -0.692403473768979
+Moving Average of  Fires-->  0          NaN
+1          NaN
+2          NaN
+3          NaN
+4      63190.6
+        ...   
+89    169595.6
+90    164042.0
+91    171084.4
+92    169492.2
+93    150408.0
+Name: Fires, Length: 94, dtype: float64
+
